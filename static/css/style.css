@@ -1,0 +1,25 @@
+p {
+    color: blue;
+    font-size: 15px;
+}
+h2 {
+    color: maroon;
+}
+
+table, td, th {
+    border-style: solid;
+    border-width: 4px;
+    border-color: blue;
+    border-collapse: collapse;
+}
+p#larger-bolder {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p.green {
+    color: green;
+}
+.red {
+   color: red;
+}
