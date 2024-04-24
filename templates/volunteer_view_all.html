@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block page_title %}
-    View All Students
+    View All Volunteers
 {% endblock %}
 
 {% block page_head %}
-    View All Students
+    View All Volunteers
 {% endblock %}
 
 {% block page_content %}
@@ -25,18 +25,18 @@
             {% endif %}
         </tr>
 
-        {% for each_student, each_major in students %}
+        {% for each_volunteer, each_major in volunteers %}
         <tr>
-            <td><a href="{{ url_for('student_view', student_id=each_student['student_id']) }}">{{ each_student['last_name'] }}</a></td>
-            <td>{{ each_student['first_name'] }}</td>
-            <td>{{ each_student['email'] }}</td>
+            <td><a href="{{ url_for('volunteer_view', volunteer_id=each_volunteer['volunteer_id']) }}">{{ each_volunteer['last_name'] }}</a></td>
+            <td>{{ each_volunteer['first_name'] }}</td>
+            <td>{{ each_volunteer['email'] }}</td>
             <td>{{ each_major['major'] }}</td>
-            <td>{{ 'Yes' if each_student['is_honors'] == 1 else 'No' }}</td>
+            <td>{{ 'Yes' if each_volunteer['is_honors'] == 1 else 'No' }}</td>
             {% if current_user.role in ['ADMIN', 'MANAGER'] %}
             <td>
-                <a href="{{ url_for('student_edit', student_id=each_student['student_id']) }}" class="btn btn-secondary" role="button">Edit</a>
+                <a href="{{ url_for('volunteer_edit', volunteer_id=each_volunteer['volunteer_id']) }}" class="btn btn-secondary" role="button">Edit</a>
                 {% if current_user.role in ['ADMIN'] %}
-                <a href="{{ url_for('student_delete', student_id=each_student['student_id']) }}" class="btn btn-secondary" role="button">Delete</a>
+                <a href="{{ url_for('volunteer_delete', volunteer_id=each_volunteer['volunteer_id']) }}" class="btn btn-secondary" role="button">Delete</a>
                 {% endif %}
             </td>
             {% endif %}
@@ -49,13 +49,13 @@
     {% if current_user.role in ['ADMIN', 'MANAGER'] %}
     <div class="row">
         <div class="col">
-            Total Number of Students: {{ students|length }}
+            Total Number of Volunteers: {{ volunteers|length }}
         </div>
     </div>
 
     <div class="row">
         <div class="col text-center">
-            <a href="{{ url_for('student_create') }}" class="btn btn-primary" role="button">Add New Student</a>
+            <a href="{{ url_for('volunteer_create') }}" class="btn btn-primary" role="button">Add New Volunteer</a>
         </div>
     </div>
     {% endif %}

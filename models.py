@@ -3,10 +3,10 @@ from flask_login import UserMixin
 db = SQLAlchemy()
 
 #creating student model
-class Student(db.Model):
-    __tablename__ = "student"
+class Volunteer(db.Model):
+    __tablename__ = "volunteer"
 
-    student_id = db.Column(db.Integer, primary_key=True)
+    volunteer_id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(30), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), nullable=True)
@@ -35,7 +35,7 @@ class Major(db.Model):
 
     major_id = db.Column(db.Integer, primary_key=True)
     major = db.Column(db.String(30), nullable=False)
-    students = db.relationship('Student', backref='students')
+    volunteers = db.relationship('Volunteer', backref='volunteers')
 
     def __init__(self, major):
         self.major = major
